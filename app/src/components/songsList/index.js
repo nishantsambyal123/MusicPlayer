@@ -1,15 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import SongItem from '../SongListItem';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {View, StyleSheet, FlatList} from 'react-native';
 
-const songs = props => {
+const Songs = props => {
+  const navigation = useNavigation();
   const {data} = props;
-
   function renderIndividual(item) {
-    return <SongItem detail={item} />;
+    return <SongItem detail={item} itemClicked={songClickListener} />;
   }
+
+  function songClickListener(song) {
+    navigation.navigate('SongDetails', {song});
+  }
+
   return (
     <View style={styles.mainContainer}>
       <FlatList
@@ -27,14 +32,10 @@ function mapStateToProps({HomeScreenReducer}) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(songs);
+export default connect(mapStateToProps)(Songs);

@@ -15,7 +15,7 @@ const AppStackEntry = () => {
           name="SongDetails"
           component={SongDetails}
           options={{
-            headerShown: false,
+            headerShown: true,
           }}
         />
       </Stack.Navigator>
