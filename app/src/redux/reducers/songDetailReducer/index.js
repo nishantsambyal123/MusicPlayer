@@ -1,1 +1,1 @@
-export {default} from './songDetailReducer';
+export {default} from './songDetail.reducer';

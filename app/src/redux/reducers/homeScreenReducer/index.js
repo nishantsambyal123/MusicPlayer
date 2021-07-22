@@ -1,1 +1,1 @@
-export {default} from './homeScreenReducer';
+export {default} from './homeScreen.reducer';
